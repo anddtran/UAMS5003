@@ -14,7 +14,8 @@ def find_frequency(data, y):
     frequency = data[data['RWORDS'] == y]['RFREQ']
     return frequency.values[0] #return the value only
 
-reverse_words = [reverse(word) for word in rwords]
+unique_words = list(set(rwords))
+reverse_words = [reverse(word) for word in unique_words]
 sorted_words = sorted(reverse_words)
 rhyme_words = [reverse(word) for word in sorted_words]
 frequency_reorder = [find_frequency(data, x) for x in rhyme_words]
@@ -24,6 +25,6 @@ dataframe['rhyme_words'] = rhyme_words #dataframe column 0
 dataframe['frequency_reorder'] = frequency_reorder #dataframe column 1
 
 #outputs to xlsx file without the index column from the dataframe
-file_path = '/Users/andrewtran/Documents/pycharm/5003/output.xlsx'
+file_path = './output.xlsx'
 dataframe.to_excel(file_path, index=False, engine='openpyxl') 
 print(dataframe)
