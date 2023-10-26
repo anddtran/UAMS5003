@@ -21,9 +21,7 @@ if __name__ == '__main__':
     rhyme_words = [reverse(word) for word in sorted_words]
     frequency_reorder = [find_frequency(data, x) for x in rhyme_words]
 
-    dataframe = pd.DataFrame() #create empty dataframe
-    dataframe['rhyme_words'] = rhyme_words #dataframe column 0
-    dataframe['frequency_reorder'] = frequency_reorder #dataframe column 1
+    dataframe = pd.DataFrame({'rhyme_words': rhyme_words, 'frequency_reorder': frequency_reorder}) #create dataframe
 
     #outputs to xlsx file without the index column from the dataframe
     file_path = './output.xlsx'
