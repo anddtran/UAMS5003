@@ -16,29 +16,20 @@
 import regex as re
 import os
 
-file_path = 'C:\\Users\\anddt\\OneDrive\\Documents\\GitHub\\UAMS5003\\midterm\\sq.txt'
-sequences = []
-
-if os.path.exists(file_path):
-    with open(file_path, 'r') as f:
-        for line in f:
-            sequences.append(line.strip())
-        print("Number of lines in sequences:", len(sequences)) #check if the file was accessed correctly
+file_path = '/Users/andrewtran/repos/5003/midterm/sq.txt'
+#file_path = 'C:\\Users\\anddt\\OneDrive\\Documents\\GitHub\\UAMS5003\\midterm\\sq.txt'
 
 if os.path.exists(file_path):
     with open(file_path, 'r') as file:
         sequence = file.read()
+        sequence2 = sequence.replace('\n', '')
 
-dotmatches = re.findall(r'\.+', sequence)
-cgmatches = re.findall(r'CG', sequence)
+# print(sequence2) #used to check the read
+nmatches = re.findall(r'N+', sequence2)
+dotmatches = re.findall(r'\.+', sequence2)
+cgmatches = re.findall(r'CG', sequence2)
 
-n_list = []
-for line in sequences:
-    matches = re.findall(r"N+", line)
-    match_count = len(matches)
-    n_list.append(match_count)
-print(f'Number of N+ matches per line: {n_list}')
-
+print(f'There are {len(nmatches)} number of N+')
 
 for i in range(1, len(max(dotmatches))+1):
     y = dotmatches.count(i*'.')
@@ -47,8 +38,10 @@ for i in range(1, len(max(dotmatches))+1):
 
 print(f'There are {len(cgmatches)} CG matches')
 
+sequence3 = sequence2.replace('CG', )
 
 
+#Code GRAVEYARD
 #tried some things here, may go back to it later
 '''x1 = 0
 for i in period_list:
@@ -58,9 +51,9 @@ for i in period_list:
         x1 += 1
 #x1 = [re.match('\.', i) for i in period_list]
 x_1 = period_list.count('.')
-print(x_1)'''
+print(x_1)
 
-'''period_list =[]
+period_list =[]
 for line in sequence:
     matches = re.findall(r'\.+', line)
     period_list.extend(matches)
@@ -68,12 +61,23 @@ for line in sequence:
 #print(period_list)
 #print(len(period_list))
 #print(max(period_list))
-#print(len(max(period_list)))'''
+#print(len(max(period_list)))
 
-'''cgmatches = []
+
+cgmatches = []
 for line in sequences:
     cgmatch = re.findall(r'CG', line)
     cgmatches.extend(cgmatch)
-print(f'There are {len(cgmatches)} CG matches')'''
+print(f'There are {len(cgmatches)} CG matches')
+
+n_list = []
+for line in sequences:
+    matches = re.findall(r"N+", line)
+    match_count = len(matches)
+    n_list.append(match_count)
+print(f'Number of N+ matches per line: {n_list}')
+
+
+'''
 
 
