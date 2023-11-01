@@ -16,30 +16,50 @@
 import regex as re
 import os
 
-file_path = '/Users/andrewtran/repos/5003/midterm/sq.txt'
-#file_path = 'C:\\Users\\anddt\\OneDrive\\Documents\\GitHub\\UAMS5003\\midterm\\sq.txt'
 
-if os.path.exists(file_path):
-    with open(file_path, 'r') as file:
-        sequence = file.read()
-        sequence2 = sequence.replace('\n', '')
+def openfile():
+    file_path = '/Users/andrewtran/repos/5003/midterm/sq.txt'
+    #file_path = 'C:\\Users\\anddt\\OneDrive\\Documents\\GitHub\\UAMS5003\\midterm\\sq.txt'
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            sequence = file.read()
+            sequence2 = sequence.replace('\n', '')
+        return sequence2
 
-# print(sequence2) #used to check the read
-nmatches = re.findall(r'N+', sequence2)
-dotmatches = re.findall(r'\.+', sequence2)
-cgmatches = re.findall(r'CG', sequence2)
+def nmatches(sequence2):
+    nmatches = re.findall(r'N+', sequence2)
+    return nmatches
 
-print(f'There are {len(nmatches)} number of N+')
+def dotmatches(sequence2):
+    dotmatches = re.findall(r'\.+', sequence2)
+    return dotmatches
 
-for i in range(1, len(max(dotmatches))+1):
-    y = dotmatches.count(i*'.')
-    x = i * '.'
-    print(f'There are {y} number of {x}')
+def cgmatches(sequence2):
+    cgmatches = re.findall(r'CG', sequence2)
+    return cgmatches
 
-print(f'There are {len(cgmatches)} CG matches')
+def printdot(dotmatches):
+    for i in range(1, len(max(dotmatches))+1):
+        y = dotmatches.count(i*'.')
+        x = i * '.'
+        print(f'There are {y} number of {x}')
 
-sequence3 = sequence2.replace('CG', )
+def underlineCG(sequence2):
+    sequence3 = sequence2.replace('CG', 'C\u0332G\u0332')
+    return sequence3
 
+def writeout(sequence3):
+    output_path = '/Users/andrewtran/repos/5003/midterm/sequences_CG.txt'
+    with open(output_path, 'w', encoding='utf8') as file:
+        file.write(sequence3)
+
+if __name__ == '__main__':
+    sq = openfile()
+    print(f'There are {len(nmatches(sq))} number of N+')
+    printdot(dotmatches(sq))
+    print(f'There are {len(cgmatches(sq))} CG matches')
+    sequence_underline = underlineCG(sq)
+    writeout(sequence_underline)
 
 #Code GRAVEYARD
 #tried some things here, may go back to it later
@@ -62,7 +82,6 @@ for line in sequence:
 #print(len(period_list))
 #print(max(period_list))
 #print(len(max(period_list)))
-
 
 cgmatches = []
 for line in sequences:
