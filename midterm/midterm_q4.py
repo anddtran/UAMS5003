@@ -11,7 +11,20 @@ according to your model?
 '''
 
 import pandas as pd
-import sklearn
+from sklearn.linear_model import LinearRegression
 
-df = pd.read_csv('/Users/andrewtran/repos/5003/midterm/insurance.csv')
+df = pd.read_csv('C:\\Users\\anddt\\OneDrive\\Documents\\GitHub\\UAMS5003\\midterm\\insurance.csv')
 print(df.head())
+
+independent = ['age', 'bmi']
+X = df[independent]
+y = df.charges
+reg = LinearRegression().fit(X,y)
+
+coefficients = reg.coef_
+intercept = reg.intercept_
+print('Coefficients: ', coefficients)
+print('Intercept: ', intercept)
+
+R2 = reg.score(X, y)
+print('R2: ', R2)
