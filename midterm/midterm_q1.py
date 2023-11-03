@@ -52,6 +52,7 @@ def writeout(sequence3):
     output_path = '/Users/andrewtran/repos/5003/midterm/sequences_CG.txt'
     with open(output_path, 'w', encoding='utf8') as file:
         file.write(sequence3)
+        print('file created')
 
 if __name__ == '__main__':
     sq = openfile()
