@@ -6,7 +6,8 @@ probability 1 − p. For reproducibility, set the seed of your random number gen
 
 import re
 import sys
-import random 
+import random
+import numpy as np
 random.seed(500323)
 
 def userinput(): #check user input string to only allow ones and zeros, then return a list
@@ -30,7 +31,7 @@ def t_or_f(p):
     else:
         return 'F'
 
-def matrix(m, n, p):
+def matrix_create(m, n, p):
     matrix = []
     for i in range(m):
         row = []
@@ -39,11 +40,12 @@ def matrix(m, n, p):
         matrix.append(row)
     return matrix
 
-def draw(matrix):
-    for row in matrix:
-        print(row)
+def np_matrix(matrix):
+    matrix = np.array(matrix)
+    return matrix
 
 if __name__ == '__main__':
     m, n, p = userinput()
-    matrix = matrix(m, n, p)
-    draw(matrix)
+    matrix_lists = matrix_create(m, n, p)
+    matrix = np_matrix(matrix_lists)
+    print(matrix)
