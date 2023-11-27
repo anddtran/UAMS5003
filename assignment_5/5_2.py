@@ -22,7 +22,6 @@ Matrix is here, built a dictionary with the transition probabilities to use nump
     gonna build a few functions to do this: see below
 '''
 
-import re
 import sys
 import numpy as np
 

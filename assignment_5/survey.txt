@@ -1,4 +1,4 @@
-A R E O S T
+Age R(size?) Education Occupation Sex Transportation
 adult big high emp F car
 adult small uni emp M car
 adult big uni emp F train
