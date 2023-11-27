@@ -36,7 +36,7 @@ transitions = {
 
 initial_distribution = np.array([0.3, 0.2, 0.1, 0.3, 0.1])
 
-def userinput(): #check user input string to only allow ones and zeros, then return a list
+def userinput(): #check user input string to only allow digits
     usrinput = input('please enter the number of steps: ')
     if usrinput.isdigit():
         print('the input is accepted...')

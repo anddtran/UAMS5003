@@ -71,6 +71,9 @@ Occupation      False     False      False       False  False           False
 Sex             False     False      False       False  False           False
 Transportation  False     False      False       False  False           False
 
+The DAGs have different expected findings on what has an effect on which target. 
+
+
 DAG for survey.txt:
 target            Age  R(size?)  Education  Occupation    Sex  Transportation
 source
