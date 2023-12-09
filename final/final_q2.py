@@ -44,8 +44,8 @@ def post_prob(m, n, status, x):
         'sick' : {'P': 0.82, 'N' : 0.09, 'I' : 0.09}, 
         }
     priors = {'healthy': m, 'sick': n}
-    total_prob = sum(distribution[status][x] * priors[status] for status in distribution)
-    probability = distribution[status][x] * priors[status] / total_prob
+    total_prob = sum(distribution[status][x] * priors[status] for status in distribution) # needed for denominator of the calculation = total probabilitiy of x given status for all statuses
+    probability = distribution[status][x] * priors[status] / total_prob # probability of x given status times the probability of status divided 
     return probability
 
 if __name__ == '__main__':
@@ -57,5 +57,5 @@ if __name__ == '__main__':
 
 '''
 To calculate (a), use the P(healthy) = 0.9 and P(sick) = 0.1 for the prior distributions. The result == 0.4675324675324675
-For (b), the functions allow us to select x for healthy or sick to calculate the posterior probability
+For (b), the functions allow us to select positive, negative, or inconclusive for healthy or sick to calculate the posterior probability
 '''
