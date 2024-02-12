@@ -33,6 +33,7 @@ print('Intercept: ', intercept, '\n')
 print(f'If age stays the same, the charges increase by {coefficients[1]} for an increase in 1 by BMI.')
 R2 = reg.score(X, y)
 print('R2: ', R2)
+print(reg.summary())
 print('\n\n')
 
 
